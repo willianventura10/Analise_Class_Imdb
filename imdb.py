@@ -275,4 +275,4 @@ consulta6 = '''
             LIMIT 1
             ''' 
 resultado6 = pd.read_sql_query(consulta6, conn)
-resultado6
+resultado6 
