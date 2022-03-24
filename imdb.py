@@ -252,3 +252,27 @@ plt.ylabel('Número de Filmes Avaliados')
 plt.title('\nNúmero de Filmes Avaliados Por Gênero Em Relação ao Ano de Estréia\n')
 plt.legend(labels = top_generos)
 plt.show()
+
+# QUAL O FILME COM MAIOR TEMPO DE DURAÇÃO? 
+
+# Consulta SQL
+consulta6 = '''SELECT runtime_minutes Runtime FROM titles WHERE type = 'movie' AND Runtime != 'NaN' '''
+# Resultado
+resultado6 = pd.read_sql_query(consulta6, conn)
+display(resultado6)
+
+# cálculo dos percentis
+for i in range(101): 
+    perc = round(np.percentile(resultado6['Runtime'].values, i), 2)
+    print('{} percentil da duração (runtime) é: {}'.format(i, perc))
+
+# Refazendo a consulta e retornando o filme com maior duração
+consulta6 = '''
+            SELECT runtime_minutes Runtime, primary_title
+            FROM titles 
+            WHERE type = 'movie' AND Runtime != 'NaN'
+            ORDER BY Runtime DESC
+            LIMIT 1
+            ''' 
+resultado6 = pd.read_sql_query(consulta6, conn)
+resultado6
