@@ -392,3 +392,35 @@ plt.ylabel('País')
 plt.xlabel('\nNúmero de Filmes')
 plt.title('\nNúmero de Filmes Produzidos Por País\n')
 plt.show()
+
+#QUAIS SÃO OS TOP 10 MELHORES FILMES?
+
+# Consulta SQL
+consulta9 = '''
+            SELECT primary_title AS Movie_Name, genres, rating
+            FROM 
+            titles JOIN ratings
+            ON  titles.title_id = ratings.title_id
+            WHERE titles.type = 'movie' AND ratings.votes >= 25000
+            ORDER BY rating DESC
+            LIMIT 10          
+            ''' 
+# Resultado
+top10_melhores_filmes = pd.read_sql_query(consulta9, conn)
+display(top10_melhores_filmes)
+
+#QUAIS SÃO OS TOP 10 PIORES FILMES?
+
+# Consulta SQL
+consulta10 = '''
+            SELECT primary_title AS Movie_Name, genres, rating
+            FROM 
+            titles JOIN ratings
+            ON  titles.title_id = ratings.title_id
+            WHERE titles.type = 'movie' AND ratings.votes >= 25000
+            ORDER BY rating ASC
+            LIMIT 10
+            ''' 
+# Resultado
+top10_piores_filmes = pd.read_sql_query(consulta10, conn)
+display(top10_piores_filmes)
