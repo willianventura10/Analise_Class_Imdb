@@ -77,11 +77,6 @@ generos = generos.drop(columns = 'n', axis = 0)
 # Visualiza
 generos.info()
 
-# Exporta CSV para trabalho no Power BI
-#geneross = pd.DataFrame(generos)
-#display(geneross)
-#geneross.to_csv("D:/Data_Science/Projetos/Imdb/imdb_csv/titulos_genero.csv")
-
 # Calcula o percentual
 generos_percentual = 100 * pd.Series(generos.sum()).sort_values(ascending = False) / generos.shape[0]
 # Visualiza
@@ -154,9 +149,6 @@ df_genero_ratings = df_genero_ratings.drop(index = 18)
 # Ordena o resultado
 df_genero_ratings = df_genero_ratings.sort_values(by = 'rating', ascending = False)
 
-# Exporta CSV para trabalho no Power BI
-#df_genero_ratings.to_csv("D:/Data_Science/Projetos/Imdb/imdb_csv/mediana_avali_genero.csv")
-
 # Plot
 
 # Figura
@@ -193,9 +185,6 @@ consulta4 = '''
 # Resultado
 resultado4 = pd.read_sql_query(consulta4, conn)
 display(resultado4)
-
-# Exporta CSV para trabalho no Power BI
-#resultado4.to_csv("D:/Data_Science/Projetos/Imdb/imdb_csv/avaliacoes_ano.csv")
 
 # Calcula a mediana ao longo do tempo (anos)
 ratings = []
@@ -289,9 +278,6 @@ consulta6 = '''
 resultado6 = pd.read_sql_query(consulta6, conn)
 resultado6
 
-# Exporta CSV para trabalho no Power BI
-#resultado6.to_csv("D:/Data_Science/Projetos/Imdb/imdb_csv/tempo_filmes.csv")
-
 # QUAL A RELAÇÃO ENTRE DURAÇÃO E GÊNERO?
 
 # Consulta SQL
@@ -326,9 +312,6 @@ df_genero_runtime = df_genero_runtime.drop(index = 18)
 
 # Ordena os dados
 df_genero_runtime = df_genero_runtime.sort_values(by = 'runtime', ascending = False)
-
-# Exporta CSV para trabalho no Power BI
-#df_genero_runtime.to_csv("D:/Data_Science/Projetos/Imdb/imdb_csv/df_genero_runtime.csv")
 
 # Plot
 
@@ -392,9 +375,6 @@ df_filmes_paises = df_filmes_paises.sort_values(by = 'Movie_Count', ascending = 
 # Visualiza
 df_filmes_paises.head()
 
-# Exporta CSV para trabalho no Power BI
-#df_filmes_paises.to_csv("D:/Data_Science/Projetos/Imdb/imdb_csv/filmes_paises.csv")
-
 # Plot
 
 # Figura
@@ -429,8 +409,6 @@ consulta9 = '''
 # Resultado
 top10_melhores_filmes = pd.read_sql_query(consulta9, conn)
 display(top10_melhores_filmes)
-# Exporta CSV para trabalho no Power BI
-#top10_melhores_filmes.to_csv("D:/Data_Science/Projetos/Imdb/imdb_csv/classificacao.csv")
 
 #QUAIS SÃO OS TOP 10 PIORES FILMES?
 
